@@ -22,7 +22,10 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text(widget.name)),
-      body: Padding(
+
+      body: SingleChildScrollView(
+
+        
         padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -41,6 +44,8 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
               widget.name,
               style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
             ),
+
+            
             const SizedBox(height: 8),
             const Text('Selecciona el tamaño:'),
             const SizedBox(height: 8),
