@@ -13,7 +13,7 @@ class _CartScreenState extends State<CartScreen> {
   List<String> cartItems = List.generate(3, (i) => 'Hamburguesa tipo ${i + 1}');
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context) { 
     return Scaffold(
       appBar: AppBar(title: const Text('Carrito')),
       body: cartItems.isEmpty
