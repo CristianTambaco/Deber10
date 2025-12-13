@@ -9,6 +9,18 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 import 'injection_container.dart' as di; // Asegúrate de haber copiado injection_container.dart
 
 
+
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import 'core/theme/app_theme.dart';
+import 'features/auth/presentation/bloc/auth_bloc.dart';
+import 'features/auth/presentation/pages/splash_page.dart';
+
+
+
+
+
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await dotenv.load(fileName: '.env');
@@ -25,14 +37,14 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'FastFood App',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: const Color.fromARGB(255, 253, 237, 5)),
-        useMaterial3: true,
+    return MultiBlocProvider(
+      providers: [BlocProvider(create: (_) => di.sl<AuthBloc>())],
+      child: MaterialApp(
+        title: 'Flutter Auth Clean',
+        debugShowCheckedModeBanner: false,
+        theme: AppTheme.lightTheme,
+        home: const SplashPage(),
       ),
-      home: const HomeScreen(),
     );
   }
 }
