@@ -6,7 +6,10 @@ import '../bloc/auth_event.dart';
 import '../bloc/auth_state.dart';
 import '../widgets/auth_text_field.dart';
 import '../widgets/auth_button.dart';
-import 'home_page.dart';
+// import 'home_page.dart';
+
+import '../../../../screens/home_screen.dart'; // Ajusta la ruta según tu estructura
+
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({super.key});
@@ -46,7 +49,7 @@ class _RegisterPageState extends State<RegisterPage> {
       listener: (context, state) {
         if (state is AuthAuthenticated) {
           Navigator.of(context).pushReplacement(
-            MaterialPageRoute(builder: (_) => const HomePage()),
+            MaterialPageRoute(builder: (_) => const HomeScreen()),
           );
         } else if (state is AuthSignUpSuccess) {
           showDialog(

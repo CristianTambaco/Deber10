@@ -8,7 +8,10 @@ import '../widgets/auth_text_field.dart';
 import '../widgets/auth_button.dart';
 import 'forgot_password_page.dart';
 import 'register_page.dart';
-import 'home_page.dart';
+// import 'home_page.dart';
+
+import '../../../../screens/home_screen.dart'; // Ajusta la ruta según tu estructura
+
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -43,7 +46,7 @@ class _LoginPageState extends State<LoginPage> {
       listener: (context, state) {
         if (state is AuthAuthenticated) {
           Navigator.of(context).pushReplacement(
-            MaterialPageRoute(builder: (_) => const HomePage()),
+            MaterialPageRoute(builder: (_) => const HomeScreen()),
           );
         } else if (state is AuthError) {
           ScaffoldMessenger.of(context).showSnackBar(
