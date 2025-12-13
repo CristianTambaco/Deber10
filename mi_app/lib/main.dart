@@ -3,7 +3,7 @@
 
 // lib/main.dart
 import 'package:flutter/material.dart';
-import 'screens/home_screen.dart';
+// import 'screens/home_screen.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'injection_container.dart' as di; // Asegúrate de haber copiado injection_container.dart
