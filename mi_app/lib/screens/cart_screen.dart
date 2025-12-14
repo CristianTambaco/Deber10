@@ -11,6 +11,9 @@ class CartScreen extends StatefulWidget {
 class _CartScreenState extends State<CartScreen> {
   List<Map<String, dynamic>> cartItems = []; // Lista para almacenar los ítems del carrito
 
+
+  
+
   @override
   void initState() {
     super.initState();
@@ -46,6 +49,41 @@ class _CartScreenState extends State<CartScreen> {
     }
   }
 
+
+
+  // Método para vaciar todo el carrito del usuario
+  Future<void> _clearCart() async {
+    final supabaseClient = supabase.Supabase.instance.client;
+    final user = supabaseClient.auth.currentUser;
+
+    if (user == null) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Debes iniciar sesión')),
+      );
+      return;
+    }
+
+    try {
+      // Elimina todos los ítems del carrito del usuario
+      await supabaseClient.from('cart_items').delete().eq('user_id', user.id);
+
+      // Limpia la lista local
+      setState(() {
+        cartItems.clear();
+      });
+
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Carrito vaciado')),
+      );
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Error al vaciar el carrito: $e')),
+      );
+    }
+  }
+
+
+
   // Método para eliminar un ítem del carrito en Supabase
   Future<void> _removeItem(String itemId) async {
     final supabaseClient = supabase.Supabase.instance.client;
@@ -67,6 +105,12 @@ class _CartScreenState extends State<CartScreen> {
       );
     }
   }
+
+
+
+    
+
+
 
   @override
   Widget build(BuildContext context) { 
@@ -101,20 +145,48 @@ class _CartScreenState extends State<CartScreen> {
                       ),
                     ),
                   ),
+                  
                 );
               },
             ),
+
+
+            
+            
+
+
+
+
       bottomNavigationBar: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: ElevatedButton(
-          onPressed: () {
-            ScaffoldMessenger.of(context).showSnackBar(
-              const SnackBar(content: Text('¡Pedido realizado!')),
-            );
-          },
-          child: const Text('Confirmar pedido', style: TextStyle(fontSize: 18)),
-        ),
+      padding: const EdgeInsets.all(16.0),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          // 👇 Botón para vaciar el carrito
+          if (cartItems.isNotEmpty)
+            Align(
+              alignment: Alignment.centerRight,
+              child: TextButton(
+                onPressed: _clearCart,
+                child: const Text(
+                  'Vaciar carrito',
+                  style: TextStyle(color: Colors.red),
+                ),
+              ),
+            ),
+          const SizedBox(height: 12),
+          // 👇 Botón de confirmar pedido
+          ElevatedButton(
+            onPressed: () {
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(content: Text('¡Pedido realizado!')),
+              );
+            },
+            child: const Text('Confirmar pedido', style: TextStyle(fontSize: 18)),
+          ),
+        ],
       ),
+    ),
     );
   }
 }
