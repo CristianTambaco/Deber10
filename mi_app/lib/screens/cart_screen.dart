@@ -138,7 +138,7 @@ class _CartScreenState extends State<CartScreen> {
                       ],
                     ),
                     trailing: TextButton(
-                      onPressed: () => _removeItem(item['id']), // 👈 Eliminar el ítem
+                      onPressed: () => _removeItem(item['id']), //  Eliminar el registro
                       child: const Text(
                         'Eliminar',
                         style: TextStyle(color: Colors.red),
@@ -162,7 +162,7 @@ class _CartScreenState extends State<CartScreen> {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          // 👇 Botón para vaciar el carrito
+          //  Botón para vaciar el carrito
           if (cartItems.isNotEmpty)
             Align(
               alignment: Alignment.centerRight,
@@ -175,7 +175,7 @@ class _CartScreenState extends State<CartScreen> {
               ),
             ),
           const SizedBox(height: 12),
-          // 👇 Botón de confirmar pedido
+          //  Botón de confirmar pedido
           ElevatedButton(
             onPressed: () {
               ScaffoldMessenger.of(context).showSnackBar(
