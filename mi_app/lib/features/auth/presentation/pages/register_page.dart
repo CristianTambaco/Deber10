@@ -93,12 +93,12 @@ class _RegisterPageState extends State<RegisterPage> {
                     const Text('Regístrate', textAlign: TextAlign.center,
                       style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold)),
                     const SizedBox(height: 40),
-                    AuthTextField(
-                      controller: _fullNameController,
-                      label: 'Nombre completo (opcional)',
-                      prefixIcon: Icons.person_outline,
-                      enabled: !isLoading,
-                    ),
+                    // AuthTextField(
+                    //   controller: _fullNameController,
+                    //   label: 'Nombre completo (opcional)',
+                    //   prefixIcon: Icons.person_outline,
+                    //   enabled: !isLoading,
+                    // ),
                     const SizedBox(height: 16),
                     AuthTextField(
                       controller: _emailController,
