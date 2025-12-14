@@ -12,7 +12,7 @@ class AppTheme {
   static ThemeData get lightTheme {
     return ThemeData(
       useMaterial3: true,
-      colorScheme: ColorScheme.fromSeed(seedColor: primaryColor),
+      colorScheme: ColorScheme.fromSeed(seedColor: const Color.fromARGB(255, 241, 99, 99)),
       scaffoldBackgroundColor: const Color(0xFFF9FAFB),
       textTheme: GoogleFonts.interTextTheme(),
       appBarTheme: AppBarTheme(
