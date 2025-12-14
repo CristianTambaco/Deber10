@@ -16,7 +16,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Mi Perfil')),
+      appBar: AppBar(title: const Text('Opciones')),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -34,31 +34,34 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ),
               ],
             ),
-            const Divider(height: 32),
-            const Text('Información', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
-            const SizedBox(height: 16),
-            TextField(
-              controller: _nameController,
-              decoration: const InputDecoration(labelText: 'Nombre completo'),
-            ),
-            const SizedBox(height: 16),
-            TextField(
-              controller: _addressController,
-              decoration: const InputDecoration(labelText: 'Dirección de entrega'),
-              // maxLines: 2,
-            ),
-            const SizedBox(height: 32),
-            Align(
-              alignment: Alignment.center,
-              child: OutlinedButton(
-                onPressed: () {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(content: Text('Perfil actualizado')),
-                  );
-                },
-                child: const Text('Guardar cambios'),
-              ),
-            ),
+
+            // const Divider(height: 32),
+            // const Text('Información', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+            // const SizedBox(height: 16),
+            // TextField(
+            //   controller: _nameController,
+            //   decoration: const InputDecoration(labelText: 'Nombre completo'),
+            // ),
+            // const SizedBox(height: 16),
+            // TextField(
+            //   controller: _addressController,
+            //   decoration: const InputDecoration(labelText: 'Dirección de entrega'),
+            //   // maxLines: 2,
+            // ),
+            // const SizedBox(height: 32),
+            // Align(
+            //   alignment: Alignment.center,
+            //   child: OutlinedButton(
+            //     onPressed: () {
+            //       ScaffoldMessenger.of(context).showSnackBar(
+            //         const SnackBar(content: Text('Perfil actualizado')),
+            //       );
+            //     },
+            //     child: const Text('Guardar cambios'),
+            //   ),
+            // ),
+
+            
           ],
         ),
       ),
